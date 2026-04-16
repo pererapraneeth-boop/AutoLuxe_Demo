@@ -20,13 +20,9 @@ import { useRouter } from 'next/navigation';
 const inter = Inter({ subsets: ['latin'] });
 
 import { usePathname, useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
-export default function CustomerLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const router = useRouter();
+function CustomerNav() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const condition = searchParams.get('condition');
@@ -37,6 +33,24 @@ export default function CustomerLayout({
     }
     return pathname === path && !condition;
   };
+
+  return (
+    <nav style={{ display: 'flex', gap: '2.5rem', fontWeight: 600, fontSize: '0.9rem' }}>
+       <Link href="/showroom" style={{ color: isActive('/showroom') ? 'var(--primary)' : 'inherit', textDecoration: 'none' }}>Showroom</Link>
+       <Link href="/showroom?condition=NEW" style={{ color: isActive('/showroom', 'NEW') ? 'var(--primary)' : 'inherit', textDecoration: 'none' }}>New Vehicles</Link>
+       <Link href="/showroom?condition=USED" style={{ color: isActive('/showroom', 'USED') ? 'var(--primary)' : 'inherit', textDecoration: 'none' }}>Pre-Owned</Link>
+       <Link href="/heritage" style={{ color: isActive('/heritage') ? 'var(--primary)' : 'inherit', textDecoration: 'none' }}>Our Heritage</Link>
+       <Link href="/concierge" style={{ color: isActive('/concierge') ? 'var(--primary)' : 'inherit', textDecoration: 'none' }}>Concierge</Link>
+    </nav>
+  );
+}
+
+export default function CustomerLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const router = useRouter();
 
   return (
     <AuthGuard requiredRole="CUSTOMER">
@@ -59,13 +73,9 @@ export default function CustomerLayout({
                <h1 className="title-small" style={{ letterSpacing: '-0.025em', fontWeight: 800 }}>AUTOLUXE</h1>
             </Link>
 
-            <nav style={{ display: 'flex', gap: '2.5rem', fontWeight: 600, fontSize: '0.9rem' }}>
-               <Link href="/showroom" style={{ color: isActive('/showroom') ? 'var(--primary)' : 'inherit', textDecoration: 'none' }}>Showroom</Link>
-               <Link href="/showroom?condition=NEW" style={{ color: isActive('/showroom', 'NEW') ? 'var(--primary)' : 'inherit', textDecoration: 'none' }}>New Vehicles</Link>
-               <Link href="/showroom?condition=USED" style={{ color: isActive('/showroom', 'USED') ? 'var(--primary)' : 'inherit', textDecoration: 'none' }}>Pre-Owned</Link>
-               <Link href="/heritage" style={{ color: isActive('/heritage') ? 'var(--primary)' : 'inherit', textDecoration: 'none' }}>Our Heritage</Link>
-               <Link href="/concierge" style={{ color: isActive('/concierge') ? 'var(--primary)' : 'inherit', textDecoration: 'none' }}>Concierge</Link>
-            </nav>
+            <Suspense fallback={<div style={{ display: 'flex', gap: '2.5rem', fontWeight: 600, fontSize: '0.9rem' }}>Showroom</div>}>
+              <CustomerNav />
+            </Suspense>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
                <button style={{ padding: '0.4rem', color: 'var(--secondary)' }}><Search size={20} /></button>

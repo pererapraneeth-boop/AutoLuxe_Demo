@@ -4,9 +4,9 @@ import { Search, Filter, ArrowRight, Star, SlidersHorizontal, ChevronDown, Heart
 import { mockInventory, Vehicle } from '@/lib/mockData';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 
-export default function ShowroomPage() {
+function ShowroomContent() {
   const searchParams = useSearchParams();
   const conditionFilter = searchParams.get('condition');
   
@@ -250,7 +250,7 @@ export default function ShowroomPage() {
                            </div>
                            <h2 className="title-large" style={{ marginBottom: '1rem' }}>Inquiry Received</h2>
                            <p className="text-muted" style={{ fontSize: '1.1rem', marginBottom: '2.5rem' }}>
-                              Your interest in the **{selectedCar?.year} {selectedCar?.make} {selectedCar?.model}** has been logged. A concierge will contact you shortly.
+                               Your interest in the **{selectedCar?.year} {selectedCar?.make} {selectedCar?.model}** has been logged. A concierge will contact you shortly.
                            </p>
                            <button onClick={closeModal} className="button button-primary" style={{ width: '100%', padding: '1rem' }}>Return to Showroom</button>
                         </div>
@@ -327,6 +327,14 @@ export default function ShowroomPage() {
          }
       `}</style>
     </div>
+  );
+}
+
+export default function ShowroomPage() {
+  return (
+    <Suspense fallback={<div style={{ padding: '4rem', textAlign: 'center' }}>Loading Luxurious Collection...</div>}>
+      <ShowroomContent />
+    </Suspense>
   );
 }
 

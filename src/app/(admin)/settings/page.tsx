@@ -398,11 +398,11 @@ const linkStyle = {
   background: 'none',
   border: 'none',
   cursor: 'pointer'
-};
+} as const;
 
 const activeLinkStyle = {
   ...linkStyle,
   background: 'var(--primary)',
   color: 'white',
   boxShadow: 'var(--shadow-sm)'
-};
+} as const;
