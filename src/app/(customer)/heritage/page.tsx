@@ -31,7 +31,7 @@ export default function HeritagePage() {
             </div>
             <div style={{ position: 'relative' }}>
                <div style={{ position: 'absolute', top: '-20px', left: '-20px', width: '100px', height: '100px', background: 'var(--primary)', opacity: 0.1, borderRadius: '20px', zIndex: 0 }} />
-               <img src="https://images.unsplash.com/photo-1542362567-b058c02b9ac1?auto=format&fit=crop&q=80&w=800" style={{ width: '100%', height: '500px', objectFit: 'cover', borderRadius: '24px', position: 'relative', zIndex: 1, boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)' }} />
+               <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=800" style={{ width: '100%', height: '500px', objectFit: 'cover', borderRadius: '24px', position: 'relative', zIndex: 1, boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)' }} />
             </div>
          </div>
       </section>
