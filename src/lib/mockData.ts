@@ -28,11 +28,14 @@ export interface Lead {
 export interface Deal {
   id: string;
   customerName: string;
-  vehicleId: string;
+  customer?: string;
+  vehicleId?: string;
   vehicleName: string;
+  vehicle?: string;
   amount: number;
-  status: 'PROSPECT' | 'QUOTATION' | 'FINANCING' | 'CLOSED';
-  probability: number;
+  status: 'PROSPECT' | 'QUOTATION' | 'FINANCING' | 'CLOSED' | 'NEGOTIATION';
+  probability?: number;
+  date?: string;
 }
 
 export interface TestDrive {
@@ -109,8 +112,8 @@ export const mockLeads: Lead[] = [
 ];
 
 export const mockDeals: Deal[] = [
-  { id: 'D1', customerName: 'Max Power', vehicleId: '2', vehicleName: 'Porsche 911 GT3 RS', amount: 223800, status: 'FINANCING', probability: 85 },
-  { id: 'D2', customerName: 'Elena Gilbert', vehicleId: '3', vehicleName: 'Rolls-Royce Phantom', amount: 460000, status: 'PROSPECT', probability: 40 },
+  { id: 'D1', customerName: 'Max Power', customer: 'Max Power', vehicleId: '2', vehicleName: 'Porsche 911 GT3 RS', vehicle: 'Porsche 911 GT3 RS', amount: 223800, status: 'FINANCING', probability: 85, date: 'Mar 15, 2026' },
+  { id: 'D2', customerName: 'Elena Gilbert', customer: 'Elena Gilbert', vehicleId: '3', vehicleName: 'Rolls-Royce Phantom', vehicle: 'Rolls-Royce Phantom', amount: 460000, status: 'PROSPECT', probability: 40, date: 'Mar 18, 2026' },
 ];
 
 export const mockTestDrives: TestDrive[] = [
