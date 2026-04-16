@@ -119,7 +119,7 @@ export default function Dashboard() {
                 </div>
                 <div style={{ flex: 1 }}>
                   <p style={{ fontWeight: '600', fontSize: '0.9rem' }}>{lead.customerName}</p>
-                  <p className="text-muted" style={{ fontSize: '0.75rem' }}>Interested in: {lead.interestedIn}</p>
+                  <p className="text-muted" style={{ fontSize: '0.75rem' }}>Interested in: {lead.carInterest}</p>
                 </div>
                 <span className={`badge ${
                   lead.status === 'NEW' ? 'badge-warning' : 

@@ -18,10 +18,11 @@ export interface Lead {
   customerName: string;
   email: string;
   phone: string;
-  interestedIn: string;
+  carInterest: string;
   status: 'NEW' | 'CONTACTED' | 'NEGOTIATION' | 'CLOSED';
-  source: string;
-  assignedTo: string;
+  source?: string;
+  assignedTo?: string;
+  date?: string;
 }
 
 export interface Deal {
@@ -103,8 +104,8 @@ export const mockSalesData = [
 ];
 
 export const mockLeads: Lead[] = [
-  { id: 'L1', customerName: 'Raymend', email: 'ray@nexova.com', phone: '+1 555-0100', interestedIn: 'Tesla Model S', status: 'NEW', source: 'Website Inquiry', assignedTo: 'John Doe' },
-  { id: 'L2', customerName: 'Sarah Smith', email: 'sarah@me.com', phone: '+1 555-0101', interestedIn: 'Porsche 911', status: 'CONTACTED', source: 'Showroom Visit', assignedTo: 'Jane Wilson' },
+  { id: 'L1', customerName: 'Raymend', email: 'ray@nexova.com', phone: '+1 555-0100', carInterest: 'Tesla Model S', status: 'NEW', source: 'Website Inquiry', assignedTo: 'John Doe', date: '2 days ago' },
+  { id: 'L2', customerName: 'Sarah Smith', email: 'sarah@me.com', phone: '+1 555-0101', carInterest: 'Porsche 911', status: 'CONTACTED', source: 'Showroom Visit', assignedTo: 'Jane Wilson', date: '3 days ago' },
 ];
 
 export const mockDeals: Deal[] = [
